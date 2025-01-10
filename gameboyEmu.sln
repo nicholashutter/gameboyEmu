@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gameboyEmu", "gameboyEmu\gameboyEmu.csproj", "{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{900C107B-F399-46A4-B801-03F45DF372AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gameboyEmu.Tests", "gameboyEmu.Tests\gameboyEmu.Tests.csproj", "{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD0BD804-1F6B-466F-9036-99CE6E9CA6FA}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+		global.json = global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C09EB8A-919D-4B68-BD1E-8B3346CB1B22}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F4E09E46-DB88-4A6A-8A68-2BD2D033BE1A} = {900C107B-F399-46A4-B801-03F45DF372AC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B9BD3BD-CF1D-4505-AC22-F0BC1817EEF8}
+	EndGlobalSection
+EndGlobal
