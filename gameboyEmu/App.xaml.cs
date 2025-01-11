@@ -94,7 +94,9 @@ public partial class App : Application
 
         Host = await builder.NavigateAsync<Shell>();
 
-        CPU cpu = new CPU(new MMU());
+        MMU ram = new MMU();
+        CPU cpu = new CPU(ram); 
+        gameBoy gb = gameBoy.GetInstance(cpu, ram);  
     }
 
     private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)

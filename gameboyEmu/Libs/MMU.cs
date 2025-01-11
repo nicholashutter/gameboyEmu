@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace gameboyEmu.Libs;
 internal class MMU
 {
-    int[] ramBank; 
+    private int[] ramBank { get; set; } 
 public MMU()
     {
         this.ramBank = new int[0xFFFF];
