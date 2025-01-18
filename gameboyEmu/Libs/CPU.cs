@@ -1,13 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.System.Diagnostics;
-
 namespace gameboyEmu.Libs
 {
     class CPU
@@ -48,16 +38,13 @@ namespace gameboyEmu.Libs
         
       
         //current working opcodes
-        protected byte opcode1 { get; set; }
-        protected byte opcode2 { get; set; }
+        protected byte opcode { get; set; }
         //current working operands
-        protected byte operand1 { get; set; }
-        protected byte operand2 { get; set; }
+        protected byte operand { get; set; }
+        
 
         //start stop switch for cpu loop 
         protected Boolean isRunning = false;
-
-        protected Dictionary<string, string> instructionSet; 
 
         /*
          * 
@@ -66,13 +53,18 @@ namespace gameboyEmu.Libs
             reading a register, pushing machine state onto stack, or stopped/halted 
          */
 
-        protected enum State
+        protected enum CPUState
         {
             fetchOpCode, fetchExtendedOpCode, fetchOperand, running, interruptRequestReadInteruptFlag, interruptRequestReadInteruptEnabled,
             interruptRequestPush1, interruptRequestPush2, interuptRequestJump, stopped, halted
         }
 
-        public CPU(MMU memory)
+        CPUState state;
+
+        //Memory Management Unit
+        MMU ram; 
+
+        public CPU(MMU ram)
         {
             this.A = 0x000;
             this.B = 0x000;
@@ -82,12 +74,13 @@ namespace gameboyEmu.Libs
             this.F = 0x000;
             this.SP = 0x000;
             this.IE = 0x000;
-            this.opcode1 = 0x00;
-            this.opcode2 = 0x00;
-            this.operand1 = 0x00;
-            this.operand2 = 0x00;
-            State state = State.stopped;
+            this.opcode = 0x00;
+            
+            this.operand = 0x00;
 
+            this.state = CPUState.stopped;
+
+            this.ram = ram; 
         }
 
         public void runCPU()
@@ -106,7 +99,10 @@ namespace gameboyEmu.Libs
         private void fetch()
         {
             // update cpu state 
+            this.state = CPUState.fetchOpCode;
             // get next instruction (entire 8 bit word) from memory
+            //ushort instruction = this.ram.getInstruction(); 
+            // decode 8 or 16 bit, split into opcode and operand
             // update class members
         }
 
@@ -119,16 +115,22 @@ namespace gameboyEmu.Libs
             // dictionary will pair asm instruction with funciton implementation call 
             //
 
-            String instruction = this.opcode1.ToString() + this.operand1.ToString();
+            if (this.opcode == 0xCB)
+            {
 
+            }
+
+
+            /*
             switch (instruction.ToLower())
             {
                 case "00000000":
                     //nop
                     break;
-                case "00Dest(r16)0001":
+                case "00":
                     //
             }
+            */ 
         }
 
         public void stopCPU()

@@ -93,10 +93,8 @@ public partial class App : Application
         MainWindow.SetWindowIcon();
 
         Host = await builder.NavigateAsync<Shell>();
-
-        MMU ram = new MMU();
-        CPU cpu = new CPU(ram); 
-        gameBoy gb = gameBoy.GetInstance(cpu, ram);  
+ 
+        gameBoy gb = gameBoy.GetInstance();  
     }
 
     private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)

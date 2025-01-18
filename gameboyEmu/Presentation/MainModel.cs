@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Windows.Storage.Pickers;
+using gameboyEmu.Libs; 
 
 namespace gameboyEmu.Presentation;
 
@@ -37,7 +38,8 @@ public partial record MainModel
 
         if (selectedRom != null)
         {
-            var text = await FileIO.ReadTextAsync(selectedRom);
+            gameBoy gb = gameBoy.GetInstance();
+            gb.loadROM(selectedRom.Path); 
         }
         else
         {
