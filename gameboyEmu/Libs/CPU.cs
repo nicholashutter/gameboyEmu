@@ -102,8 +102,20 @@ namespace gameboyEmu.Libs
             this.state = CPUState.fetchOpCode;
             // get next instruction (entire 8 bit word) from memory
             //ushort instruction = this.ram.getInstruction(); 
+            ushort instruction = this.ram.getInstruction(this.PC);
             // decode 8 or 16 bit, split into opcode and operand
-            // update class members
+            char[] cInstruction = new char[instruction];
+            for (int i = 0; instruction > 0; i++)
+            {
+                int digit = instruction % 10; 
+                cInstruction[i] = (char)digit;
+                instruction /= 10;
+            }
+            // if Convert.toHex((cInstruction[location 0 - 7])) == "0xCB"
+            //      set some flag that we are operating on 16 bit instruction
+            // this.opcode = Convert.toHex((cInstruction[location 0 - 3]))
+            // this.operand = Convert.toHex((cInstruction[location 4 - 7]))
+            //      update class members
         }
 
         private void execute(string word)

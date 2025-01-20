@@ -39,7 +39,7 @@ public partial record MainModel
         if (selectedRom != null)
         {
             gameBoy gb = gameBoy.GetInstance();
-            gb.loadROM(selectedRom.Path); 
+             gb.loadROM(selectedRom.Path); 
         }
         else
         {

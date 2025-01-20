@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ObjectiveC;
@@ -48,15 +49,33 @@ class gameBoy
         return gb;
     }
 
-    public void loadROM(string filePath)
+    public async void loadROM(string filePath)
     {
         using (FileStream fileStream = File.Open(filePath, FileMode.Open, FileAccess.Read))
         {
-            var bytesArray = new byte[fileStream.Length];
-            fileStream.Read(bytesArray);
+            using (BinaryReader reader = new BinaryReader(fileStream))
+            {
+                byte[] bytesArray = new byte[fileStream.Length];
 
-            this.ram.writeRam(bytesArray);
+                int counter = 0;
 
+                try
+                {
+                    for (int i = 0; i < fileStream.Length; i++)
+                    {
+                        bytesArray[i] = reader.ReadByte();
+                        counter++; 
+                    }
+
+                    this.ram.writeRam(bytesArray);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"Error Reading File. Successfully Read {counter} bytes from memory."); 
+                }
+                
+            }
+            
             
         };
 
