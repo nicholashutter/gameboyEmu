@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace gameboyEmu.Libs
 {
     class CPU
@@ -85,12 +87,13 @@ namespace gameboyEmu.Libs
 
         public void runCPU()
         {
-
+            this.isRunning = true; 
             while (this.isRunning)
             {
-
+                this.PC = 0; 
                 //fetch 
-
+                this.fetch();
+                this.isRunning = false; 
                 //execute
 
             }
@@ -104,18 +107,14 @@ namespace gameboyEmu.Libs
             //ushort instruction = this.ram.getInstruction(); 
             ushort instruction = this.ram.getInstruction(this.PC);
             // decode 8 or 16 bit, split into opcode and operand
-            char[] cInstruction = new char[instruction];
-            for (int i = 0; instruction > 0; i++)
+            String hexInstruction = instruction.ToString("X2"); 
+            
+            if (hexInstruction == "CB")
             {
-                int digit = instruction % 10; 
-                cInstruction[i] = (char)digit;
-                instruction /= 10;
+                //      set some flag that we are operating on 16 bit instruction
             }
-            // if Convert.toHex((cInstruction[location 0 - 7])) == "0xCB"
-            //      set some flag that we are operating on 16 bit instruction
-            // this.opcode = Convert.toHex((cInstruction[location 0 - 3]))
-            // this.operand = Convert.toHex((cInstruction[location 4 - 7]))
             //      update class members
+            Debug.WriteLine("Done"); 
         }
 
         private void execute(string word)

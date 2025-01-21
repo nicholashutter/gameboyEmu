@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Windows.Storage.Pickers;
-using gameboyEmu.Libs; 
+using gameboyEmu.Libs;
+
+using System.Diagnostics;
 
 namespace gameboyEmu.Presentation;
 
@@ -62,7 +64,7 @@ public partial record MainModel
         var name = await Name;
         await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
     }
-    */ 
-    
+    */
+
 
 }

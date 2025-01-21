@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Documents;
 
+using System.Diagnostics;
+
 namespace gameboyEmu.Libs;
 class gameBoy
 {
@@ -49,6 +51,8 @@ class gameBoy
         return gb;
     }
 
+    
+
     public async void loadROM(string filePath)
     {
         using (FileStream fileStream = File.Open(filePath, FileMode.Open, FileAccess.Read))
@@ -79,7 +83,6 @@ class gameBoy
             
         };
 
-
-       
+        this.cpu.runCPU(); 
     }
 }

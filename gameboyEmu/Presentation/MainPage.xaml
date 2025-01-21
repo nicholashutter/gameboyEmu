@@ -29,8 +29,8 @@
         <Button Content="Go to Second Page"
             AutomationProperties.AutomationId="SecondPageButton"
             Command="{Binding GoToSecond}" />
-                --> 
-      </StackPanel>
+                -->
+            </StackPanel>
     </Grid>
   </ScrollViewer>
 </Page>
