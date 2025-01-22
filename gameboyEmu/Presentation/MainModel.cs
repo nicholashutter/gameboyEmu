@@ -23,7 +23,7 @@ public partial record MainModel
 
     public IState<string> Name => State<string>.Value(this, () => string.Empty);
 
-    public async ValueTask LoadRom()
+    public async Task LoadRom()
     {
 
         var picker = new FileOpenPicker();
